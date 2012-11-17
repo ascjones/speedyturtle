@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Reflection;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Raven.Client.Document;
+using Raven.Client.Indexes;
 
 namespace SpeedyTurtle
 {
@@ -12,6 +11,8 @@ namespace SpeedyTurtle
 
     public class MvcApplication : System.Web.HttpApplication
     {
+        public static DocumentStore Store;
+
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
@@ -35,6 +36,16 @@ namespace SpeedyTurtle
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            InitialiseRaven();
+        }
+
+        private static void InitialiseRaven()
+        {
+            Store = new DocumentStore {ConnectionStringName = "RavenDB"};
+            Store.Initialize();
+
+            IndexCreation.CreateIndexes(Assembly.GetCallingAssembly(), Store);
         }
     }
 }

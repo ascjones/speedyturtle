@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
 using Raven.Client;
+using SpeedyTurtle.Models;
+using System.Linq;
 
 namespace SpeedyTurtle.Controllers
 {
@@ -25,6 +27,11 @@ namespace SpeedyTurtle.Controllers
                 if (RavenSession != null)
                     RavenSession.SaveChanges();
             }
+        }
+
+        protected Agent GetLoggedInAgent()
+        {
+            return RavenSession.Query<Agent>().SingleOrDefault(a => a.Username == User.Identity.Name);
         }
     }
 }

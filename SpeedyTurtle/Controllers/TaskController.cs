@@ -15,22 +15,22 @@ namespace SpeedyTurtle.Controllers
         }
 
         [HttpPost]
-        public ActionResult Submit(TurtleTask turtleTask)
+        public ActionResult Submit(UserTask userTask)
         {
-            RavenSession.Store(turtleTask);
-            return RedirectToAction("Details", new {id = turtleTask.Id});
+            RavenSession.Store(userTask);
+            return RedirectToAction("Details", new {id = userTask.Id});
         }
 
         public ActionResult Details(int id)
         {
-            var task = RavenSession.Load<TurtleTask>(id);
+            var task = RavenSession.Load<UserTask>(id);
             return View(task);
         }
 
         public ActionResult List()
         {
             // all tasks for agents to peruse
-            var allTasks = RavenSession.Query<TurtleTask>();
+            var allTasks = RavenSession.Query<UserTask>();
             return View(allTasks);
         }
     }

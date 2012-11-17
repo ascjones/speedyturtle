@@ -81,6 +81,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RavenController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Controllers\UserTaskController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -88,6 +89,7 @@
     <Compile Include="Models\Agent.cs" />
     <Compile Include="Models\Bid.cs" />
     <Compile Include="Models\Task.cs" />
+    <Compile Include="Models\ViewModels\UserTaskViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -188,6 +190,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Bid\PendingBids.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UserTask\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UserTask\Submit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UserTask\List.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

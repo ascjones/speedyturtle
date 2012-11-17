@@ -9,7 +9,7 @@ namespace SpeedyTurtle.Controllers
     {
         public ActionResult SubmitBid(int taskId)
         {
-            var task = RavenSession.Load<TurtleTask>(taskId);
+            var task = RavenSession.Load<UserTask>(taskId);
             return View(new Bid {TaskId = taskId, TaskDescription = task.Description}); // write the task description in there, just for the list view
         }
 
@@ -24,9 +24,20 @@ namespace SpeedyTurtle.Controllers
             return RedirectToAction("PendingBids");
         }
 
+        public ActionResult AcceptBid(int bidId)
+        {
+            var bid = RavenSession.Load<Bid>(bidId);
+            var task = RavenSession.Load<UserTask>(bid.TaskId);
+
+            task.AcceptWinningBid(bid);
+
+            return RedirectToAction("Details", "UserTask"); // todo: [AJ] change the display of the user task if it is in progreee
+        }
+
         public ActionResult PendingBids()
         {
-            var pendingBids = RavenSession.Query<Bid>().Where(b => b.Status == BidStatus.Pending);
+            var loggedInAgent = GetLoggedInAgent();
+            var pendingBids = RavenSession.Query<Bid>().Where(b => b.AgentId == loggedInAgent.Id && b.Status == BidStatus.Pending);
             return View(pendingBids);
         }
     }

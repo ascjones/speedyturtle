@@ -12,13 +12,17 @@ namespace SpeedyTurtle.Models
     public class Bid
     {
         public int Id { get; set; }
-        public int TaskId { get; set; }
-        public string TaskDescription { get; set; }
-        public int AgentId { get; set; }
+        public AgentDetail Agent { get; set; }
         public DateTime Submitted { get; set; }
         public string Comments { get; set; }
         public decimal Amount { get; set; }
 
         public BidStatus Status { get; set; }
+    }
+
+    public class AgentDetail
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

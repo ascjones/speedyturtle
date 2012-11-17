@@ -1,6 +1,5 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
-using Raven.Client.Linq;
 using SpeedyTurtle.Models;
 using System.Linq;
 

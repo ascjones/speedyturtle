@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using SpeedyTurtle.Models;
 using SpeedyTurtle.Models.ViewModels;
@@ -32,24 +30,34 @@ namespace SpeedyTurtle.Controllers
         public ActionResult Details(int id)
         {
             var task = RavenSession.Load<UserTask>(id);
-            var viewModel = CreateTaskViewModel(task);
-
-            viewModel.Bids = RavenSession.Query<Bid>()
-                .Where(b => b.TaskId == task.Id && b.Status == BidStatus.Pending)
-                .Select(b => new UserTaskBidViewModel { Id = b.Id, AgentId = b.AgentId, Amount = b.Amount }) // todo: get Agent name - join somehow?
-                .ToArray();
+            var viewModel = CreateTaskViewModel(task);            
 
             return View(viewModel);
         }
 
+        public ActionResult AcceptBid(int taskId, int bidId)
+        {
+            var task = RavenSession.Load<UserTask>(taskId);
+
+            task.AcceptWinningBid(bidId);
+
+            return RedirectToAction("Details", "UserTask"); // todo: [AJ] change the display of the user task if it is in progreee
+        }
+
         private static UserTaskViewModel CreateTaskViewModel(UserTask task)
         {
+            var userTaskBidViewModels = task.Bids == null ? new UserTaskBidViewModel[]{} : task.Bids.Select(b => new UserTaskBidViewModel
+            {
+                Id = b.Id, AgentId = b.Agent.Id, AgentName = b.Agent.Name, Amount = b.Amount,
+            }).ToArray();
+
             var viewModel = new UserTaskViewModel
             {
                 Id = task.Id,
                 Title = task.Title,
                 Description = task.Description,
-                MaximumOffer = task.MaximumOffer
+                MaximumOffer = task.MaximumOffer,
+                Bids = userTaskBidViewModels
             };
             return viewModel;
         }

@@ -89,6 +89,7 @@
     <Compile Include="Models\Agent.cs" />
     <Compile Include="Models\Bid.cs" />
     <Compile Include="Models\Task.cs" />
+    <Compile Include="Models\ViewModels\AgentBidViewModel.cs" />
     <Compile Include="Models\ViewModels\UserTaskViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -186,7 +187,7 @@
     <Content Include="Views\Task\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Bid\SubmitBid.cshtml" />
+    <Content Include="Views\Task\SubmitBid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Bid\PendingBids.cshtml" />

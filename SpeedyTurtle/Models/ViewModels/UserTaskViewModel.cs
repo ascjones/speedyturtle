@@ -13,7 +13,7 @@
     {
         public int Id { get; set; }
         public int AgentId { get; set; }
-        public int AgentName { get; set; }
+        public string AgentName { get; set; }
         public decimal Amount { get; set; }
     }
 }

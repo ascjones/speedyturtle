@@ -20,6 +20,8 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("I want to do this task!", "SubmitBid", "Bid", new { taskId = Model.Id }, null)
+    @Html.ActionLink("I want to do this task!", "SubmitBid", new { taskId = Model.Id })
+</p>
+<p>
     @Html.ActionLink("Back to List", "List")
 </p>

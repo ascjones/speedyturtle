@@ -32,7 +32,7 @@ namespace SpeedyTurtle.Controllers
                     {
                         return Redirect(returnUrl);
                     }
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("List", "Task"); // go to the list of all available tasks
                 }
                 ModelState.AddModelError("", "The user name or password provided is incorrect.");
             }

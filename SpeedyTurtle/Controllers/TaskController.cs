@@ -26,5 +26,12 @@ namespace SpeedyTurtle.Controllers
             var task = RavenSession.Load<TurtleTask>(id);
             return View(task);
         }
+
+        public ActionResult List()
+        {
+            // all tasks for agents to peruse
+            var allTasks = RavenSession.Query<TurtleTask>();
+            return View(allTasks);
+        }
     }
 }

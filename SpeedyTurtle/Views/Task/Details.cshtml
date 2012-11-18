@@ -4,23 +4,17 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Task Details</h2>
-
 <fieldset>
-    <legend>Task</legend>
+    <legend><strong>@Html.DisplayFor(model => model.Title)</strong></legend>
 
-    <div class="display-label">Title</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Title)
+        <p>@Html.DisplayFor(model => model.Description)</p>
     </div>
 
-    <div class="display-label">Description</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Description)
-    </div>
 </fieldset>
+<hr/>
 <p>
-    @Html.ActionLink("I want to do this task!", "SubmitBid", new { taskId = Model.Id })
+    @Html.ActionLink("I want to do this task!", "SubmitBid", new { taskId = Model.Id }, new { @class = "btn btn-primary" })
 </p>
 <p>
     @Html.ActionLink("Back to List", "List")

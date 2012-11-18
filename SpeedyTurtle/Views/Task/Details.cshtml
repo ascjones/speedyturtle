@@ -21,10 +21,13 @@
         
         <div class="dropdown-menu">
             <form id="submit-bid" action="/Task/SubmitBid" class="form-horizontal" style="margin: 10px">
-                R <input type="text" name="Amount" class="input-small" placeholder="Amount">
-                  <input type="text" name="Comments" class="input-xlarge" placeholder="Comments">
-                  <input type="hidden" name="TaskId" value="@(Model.Id)"/>
-                  <button type="submit" class="btn" onclick="return SubmitTaskBid()">Place Bid</button>
+                <div class="input-prepend">
+                    <span class="add-on">R</span>
+                    <input type="text" name="Amount" class="input-small" placeholder="Amount">
+                </div>
+                <input type="text" name="Comments" class="input-xlarge" placeholder="Comments">
+                <input type="hidden" name="TaskId" value="@(Model.Id)"/>
+                <button type="submit" class="btn" onclick="return SubmitTaskBid()">Place Bid</button>
             </form>
         </div>
     </div>

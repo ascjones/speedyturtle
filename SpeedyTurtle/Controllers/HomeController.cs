@@ -6,8 +6,8 @@ namespace SpeedyTurtle.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Speedy Turtles!";
-
+            ViewBag.Active = "Home";
+            
             return View();
         }
 

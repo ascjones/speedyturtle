@@ -37,22 +37,31 @@
 
 @if (ViewBag.UserType != null && ViewBag.UserType == UserType.Seeker)
 {
-    <table>
-        @if (Model.Bids != null || Model.Bids.Any())
+        if (Model.Bids != null || Model.Bids.Any())
         {
-            foreach(var bid in Model.Bids)
-            {
+            <h4>Bids</h4>
+            <table class="table table-striped">
+                <tr>
+                    <th>Task Runner</th>
+                    <th>Bid Amount</th>
+                </tr>
+                @foreach(var bid in Model.Bids)
+                {
                 <tr>
                     <td>
-                        @Html.ActionLink(bid.Agent.Name, "Profile", "User", new {id = bid.Agent.Id})  
+                        @Html.ActionLink(bid.Agent.Name, "Profile", "Account")
                     </td>
                     <td>
-                        @(bid.Amount)
+                        <strong>@(bid.Amount)</strong>
+                    </td>
+                    <td>
+                        @Html.ActionLink("Accept Bid", "AcceptBid", new {taskId = Model.Id, bidId = bid.Id})
                     </td>
                 </tr>
-            }
+                }
+
+            </table>
         }
-    </table>
 }
 
 <hr/>

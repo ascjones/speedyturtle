@@ -59,5 +59,15 @@ namespace SpeedyTurtle.Controllers
 
             return RedirectToAction("PendingBids", "Bid", new {id = task.Id});
         }
+
+        [HttpGet]
+        public ActionResult AcceptBid(int taskId, int bidId)
+        {
+            var task = RavenSession.Load<UserTask>(taskId);
+
+            task.AcceptWinningBid(bidId);
+
+            return RedirectToAction("Details", "UserTask"); // todo: [AJ] change the display of the user task if it is in progreee
+        }
     }
 }

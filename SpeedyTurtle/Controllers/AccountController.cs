@@ -7,7 +7,10 @@ namespace SpeedyTurtle.Controllers
 {
     public class AccountController : RavenController
     {
-
+        public ActionResult Profile()
+        {
+            return View();
+        }
         //
         // GET: /Account/LogOn
 

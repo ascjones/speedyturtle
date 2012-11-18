@@ -7,15 +7,28 @@
 <fieldset>
     <legend><strong>@Html.DisplayFor(model => model.Title)</strong></legend>
 
-    <div class="display-field">
-        <p>@Html.DisplayFor(model => model.Description)</p>
-    </div>
+    <p class="well">
+        @Html.DisplayFor(model => model.Description)
+    </p>
 
 </fieldset>
+
+@if (ViewBag.IsAgent != null && ViewBag.IsAgent)
+{
+    <div class="dropdown">
+        <a class="btn btn-primary" data-target="#" data-toggle="dropdown">I can do this task!</a>
+        
+        <div class="dropdown-menu">
+            <form class="form-horizontal" style="margin: 10px">
+                R <input type="text" class="input-small" placeholder="Amount">
+                <input type="text" class="input-xlarge" placeholder="Comments">
+                <button type="submit" class="btn">Place Bid</button>
+            </form>
+        </div>
+    </div>
+}
+
 <hr/>
 <p>
-    @Html.ActionLink("I want to do this task!", "SubmitBid", new { taskId = Model.Id }, new { @class = "btn btn-primary" })
-</p>
-<p>
-    @Html.ActionLink("Back to List", "List")
+    @Html.ActionLink("Back to Tasks", "List")
 </p>

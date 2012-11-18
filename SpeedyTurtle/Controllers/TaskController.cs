@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Linq;
 using System.Web.Mvc;
-using System.Web.Routing;
 using SpeedyTurtle.Models;
 using SpeedyTurtle.Models.ViewModels;
 
@@ -24,6 +22,8 @@ namespace SpeedyTurtle.Controllers
         public ActionResult Details(int id)
         {
             var task = RavenSession.Load<UserTask>(id);
+            var loggedInAgent = GetLoggedInAgent();
+            ViewBag.IsAgent = loggedInAgent != null;
             return View(task);
         }
 

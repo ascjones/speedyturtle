@@ -16,17 +16,19 @@
 @if (ViewBag.IsAgent != null && ViewBag.IsAgent)
 {
     <div class="dropdown">
-        <a class="btn btn-primary" data-target="#" data-toggle="dropdown">I can do this task!</a>
+        <a id="submitBid" class="btn btn-primary" data-target="#" data-toggle="dropdown">I can do this task!</a>
         
         <div class="dropdown-menu">
             <form id="submit-bid" action="/Task/SubmitBid" class="form-horizontal" style="margin: 10px">
                 R <input type="text" name="Amount" class="input-small" placeholder="Amount">
                   <input type="text" name="Comments" class="input-xlarge" placeholder="Comments">
                   <input type="hidden" name="TaskId" value="@(Model.Id)"/>
-                <button type="submit" class="btn" onclick="return SubmitTaskBid()">Place Bid</button>
+                  <button type="submit" class="btn" onclick="return SubmitTaskBid()">Place Bid</button>
             </form>
         </div>
     </div>
+    
+    <div id="bidAccepted" class="alert alert-success hidden">Bid Accepted!</div>
 }
 
 <hr/>
@@ -38,18 +40,21 @@
     {
         var $form = $('#submit-bid');
 
-            $.ajax({
-                type: "POST",
-                url: $form.attr('action'),
-                data: $form.serialize(),
-                error: function(xhr, status, error) {
-                      //do something about the error
-                 },
-                success: function(response) {
-                     //do something with response
-                    LoadBooks();
-                }
-            });
+        $.ajax({
+            type: "POST",
+            url: $form.attr('action'),
+            data: $form.serialize(),
+            error: function (xhr, status, error) {
+                // todo: [AJ] display error message here!
+                $('[data-toggle="dropdown"]').parent().removeClass('open');
+            },
+            success: function (response) {
+                //do something with response
+                $('[data-toggle="dropdown"]').parent().removeClass('open');
+                $('#submitBid').addClass('hidden');
+                $('#bidAccepted').removeClass('hidden');
+            }
+        });
 
       return false;// if it's a link to prevent post
     }

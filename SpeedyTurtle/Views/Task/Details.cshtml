@@ -52,10 +52,10 @@
                         @Html.ActionLink(bid.Agent.Name, "Profile", "Account")
                     </td>
                     <td>
-                        <strong>@(bid.Amount)</strong>
+                        <strong>R @(bid.Amount)</strong>
                     </td>
                     <td>
-                        @Html.ActionLink("Accept Bid", "AcceptBid", new {taskId = Model.Id, bidId = bid.Id})
+                        @Html.ActionLink("Accept Bid", "AcceptBid", new {taskId = Model.Id, bidId = bid.Id}, new {@class="btn btn-success btn-mini"})
                     </td>
                 </tr>
                 }

@@ -25,7 +25,7 @@
                 @Html.LabelFor(m => m.UserName)
             </div>
             <div class="editor-field">
-                @Html.TextBoxFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName, new { autocomplete = "off" })
                 @Html.ValidationMessageFor(m => m.UserName)
             </div>
 
@@ -33,7 +33,7 @@
                 @Html.LabelFor(m => m.Email)
             </div>
             <div class="editor-field">
-                @Html.TextBoxFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email, new { autocomplete = "off" })
                 @Html.ValidationMessageFor(m => m.Email)
             </div>
 

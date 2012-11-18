@@ -23,9 +23,9 @@
             <form id="submit-bid" action="/Task/SubmitBid" class="form-horizontal" style="margin: 10px">
                 <div class="input-prepend">
                     <span class="add-on">R</span>
-                    <input type="text" name="Amount" class="input-small" placeholder="Amount">
+                    <input type="text" name="Amount" autocomplete="off" class="input-small" placeholder="Amount">
                 </div>
-                <input type="text" name="Comments" class="input-xlarge" placeholder="Comments">
+                <input type="text" name="Comments" autocomplete="off" class="input-xlarge" placeholder="Comments">
                 <input type="hidden" name="TaskId" value="@(Model.Id)"/>
                 <button type="submit" class="btn" onclick="return SubmitTaskBid()">Place Bid</button>
             </form>
@@ -33,6 +33,26 @@
     </div>
     
     <div id="bidAccepted" class="alert alert-success hidden">Bid Accepted!</div>
+}
+
+@if (ViewBag.UserType != null && ViewBag.UserType == UserType.Seeker)
+{
+    <table>
+        @if (Model.Bids != null || Model.Bids.Any())
+        {
+            foreach(var bid in Model.Bids)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(bid.Agent.Name, "Profile", "User", new {id = bid.Agent.Id})  
+                    </td>
+                    <td>
+                        @(bid.Amount)
+                    </td>
+                </tr>
+            }
+        }
+    </table>
 }
 
 <hr/>

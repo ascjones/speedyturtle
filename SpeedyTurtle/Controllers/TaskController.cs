@@ -49,7 +49,7 @@ namespace SpeedyTurtle.Controllers
                 Agent = new AgentDetail
                 {
                     Id = loggedInAgent.Id,
-                    Name = string.Format("{0} {1}", loggedInAgent.FirstName, loggedInAgent.LastName)
+                    Name = string.Format(loggedInAgent.Username)
                 },
                 Amount = viewModelBid.Amount,
                 Comments = viewModelBid.Comments,

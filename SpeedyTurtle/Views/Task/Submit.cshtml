@@ -13,19 +13,19 @@
     <div class="control-group">
         <div></div>
         <div class="controls">
-            @Html.TextBoxFor(model => model.Title, new {style = "width: 600px"})
+            @Html.TextBoxFor(model => model.Title, new {style = "width: 600px", autocomplete = "off"})
             @Html.ValidationMessageFor(model => model.Title)
         </div>
         <div class="controls">
             @Html.LabelFor(model => model.Description, "Details")
-            @Html.TextAreaFor(model => model.Description, new { style = "width: 600px; height : 200px" })
+            @Html.TextAreaFor(model => model.Description, new { style = "width: 600px; height : 200px", autocomplete = "off" })
             @Html.ValidationMessageFor(model => model.Description)
         </div>
         <div class="controls">
             @Html.LabelFor(model => model.MaximumOffer, "Maximum offer")
             <div class="input-prepend">
                 <span class="add-on">R</span>
-                @Html.TextBoxFor(model => model.MaximumOffer, new {@class="input-small"})
+                @Html.TextBoxFor(model => model.MaximumOffer, new { @class = "input-small", autocomplete = "off" })
             </div>
         </div>
     </div>

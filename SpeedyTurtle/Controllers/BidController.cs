@@ -9,7 +9,7 @@ namespace SpeedyTurtle.Controllers
     {
         public ActionResult PendingBids()
         {
-            var agent = GetLoggedInAgent();
+            var agent = GetLoggedInUser();
             // todo: [AJ] ugh, this is ugly and inefficient - consider remodelling, or building an index?
             // yuck yuck yuck
             var tasks = RavenSession.Query<UserTask>().Where(t => t.Bids != null && t.Bids.Any(b => b.Agent.Id == agent.Id)).ToArray();

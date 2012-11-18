@@ -22,8 +22,6 @@ namespace SpeedyTurtle.Controllers
         public ActionResult Details(int id)
         {
             var task = RavenSession.Load<UserTask>(id);
-            var loggedInAgent = GetLoggedInAgent();
-            ViewBag.IsAgent = loggedInAgent != null;
             return View(task);
         }
 
@@ -43,7 +41,7 @@ namespace SpeedyTurtle.Controllers
         [HttpPost]
         public ActionResult SubmitBid(AgentBidViewModel viewModelBid)
         {
-            var loggedInAgent = GetLoggedInAgent();
+            var loggedInAgent = GetLoggedInUser();
             var task = RavenSession.Load<UserTask>(viewModelBid.TaskId);
 
             task.SubmitBid(new Bid

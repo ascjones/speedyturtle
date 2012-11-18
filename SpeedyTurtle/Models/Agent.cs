@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SpeedyTurtle.Models
 {
-    public class Agent
+    public class User
     {
         public int Id { get; set; }
         
@@ -15,6 +15,13 @@ namespace SpeedyTurtle.Models
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Bio { get; set; } 
+        public string Bio { get; set; }
+
+        public UserType Type { get; set; }
+    }
+
+    public enum UserType
+    {
+        Agent, Seeker
     }
 }

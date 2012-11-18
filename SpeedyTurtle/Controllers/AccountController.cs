@@ -50,9 +50,9 @@ namespace SpeedyTurtle.Controllers
             return false;
         }
 
-        private Agent GetAgentByUsername(string username)
+        private User GetAgentByUsername(string username)
         {
-            return RavenSession.Query<Agent>().SingleOrDefault(a => a.Username == username);
+            return RavenSession.Query<User>().SingleOrDefault(a => a.Username == username);
         }
 
         //
@@ -85,7 +85,7 @@ namespace SpeedyTurtle.Controllers
 
                 if (existingAgent == null)
                 {
-                    RavenSession.Store(new Agent
+                    RavenSession.Store(new User
                     {
                         Username = model.UserName, 
                         Email = model.Email,

@@ -12,6 +12,10 @@ namespace SpeedyTurtle.Controllers
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             RavenSession = MvcApplication.Store.OpenSession();
+
+            var loggedInAgent = GetLoggedInUser();
+            if (loggedInAgent != null)
+                ViewBag.UserType = loggedInAgent.Type;
         }
 
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
@@ -29,9 +33,9 @@ namespace SpeedyTurtle.Controllers
             }
         }
 
-        protected Agent GetLoggedInAgent()
+        protected User GetLoggedInUser()
         {
-            return RavenSession.Query<Agent>().SingleOrDefault(a => a.Username == User.Identity.Name);
+            return RavenSession.Query<User>().SingleOrDefault(a => a.Username == User.Identity.Name);
         }
     }
 }

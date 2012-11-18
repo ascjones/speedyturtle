@@ -1,4 +1,5 @@
-﻿@model SpeedyTurtle.Models.UserTask
+﻿@using SpeedyTurtle.Models
+@model SpeedyTurtle.Models.UserTask
 
 @{
     ViewBag.Title = "Details";
@@ -13,7 +14,7 @@
 
 </fieldset>
 
-@if (ViewBag.IsAgent != null && ViewBag.IsAgent)
+@if (ViewBag.UserType != null && ViewBag.UserType == UserType.Agent)
 {
     <div class="dropdown">
         <a id="submitBid" class="btn btn-primary" data-target="#" data-toggle="dropdown">I can do this task!</a>

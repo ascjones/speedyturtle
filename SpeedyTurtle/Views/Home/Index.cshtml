@@ -3,7 +3,11 @@
 }
 
 <h2>
-    Because your time is valuable
+    
 </h2>
 
-@Html.ActionLink("Submit a task", "Submit", "Task", new {@class = "btn btn-large btn-success"})
+<div class="jumbotron">
+    <h1>Because your time is valuable</h1>
+    <p class="lead">Life is busy, and you want to spend your time on the most important things. Our community of trusted and reliable task runners can get things done you don't have time for.</p>
+    @Html.ActionLink("Get something done!", "Submit", "Task", new {@class = "btn btn-large btn-success"})
+</div>

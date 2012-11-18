@@ -37,7 +37,7 @@
 
 @if (ViewBag.UserType != null && ViewBag.UserType == UserType.Seeker)
 {
-        if (Model.Bids != null || Model.Bids.Any())
+        if (Model.Bids != null && Model.Bids.Any())
         {
             <h4>Bids</h4>
             <table class="table table-striped">

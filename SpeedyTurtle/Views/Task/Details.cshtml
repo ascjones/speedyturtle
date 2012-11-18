@@ -19,10 +19,11 @@
         <a class="btn btn-primary" data-target="#" data-toggle="dropdown">I can do this task!</a>
         
         <div class="dropdown-menu">
-            <form class="form-horizontal" style="margin: 10px">
-                R <input type="text" class="input-small" placeholder="Amount">
-                <input type="text" class="input-xlarge" placeholder="Comments">
-                <button type="submit" class="btn">Place Bid</button>
+            <form id="submit-bid" action="/Task/SubmitBid" class="form-horizontal" style="margin: 10px">
+                R <input type="text" name="Amount" class="input-small" placeholder="Amount">
+                  <input type="text" name="Comments" class="input-xlarge" placeholder="Comments">
+                  <input type="hidden" name="TaskId" value="@(Model.Id)"/>
+                <button type="submit" class="btn" onclick="return SubmitTaskBid()">Place Bid</button>
             </form>
         </div>
     </div>
@@ -32,3 +33,24 @@
 <p>
     @Html.ActionLink("Back to Tasks", "List")
 </p>
+<script language="javascript" type="text/javascript">
+    function SubmitTaskBid()
+    {
+        var $form = $('#submit-bid');
+
+            $.ajax({
+                type: "POST",
+                url: $form.attr('action'),
+                data: $form.serialize(),
+                error: function(xhr, status, error) {
+                      //do something about the error
+                 },
+                success: function(response) {
+                     //do something with response
+                    LoadBooks();
+                }
+            });
+
+      return false;// if it's a link to prevent post
+    }
+</script>

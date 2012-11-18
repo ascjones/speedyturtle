@@ -1,8 +1,9 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Speedy Tortoise";
 }
 
-<h2>@ViewBag.Message</h2>
-<p>
-    Get it done...
-</p>
+<h2>
+    Because your time is valuable
+</h2>
+
+@Html.ActionLink("Submit a task", "Submit", "Task", new {@class = "btn btn-large btn-success"})

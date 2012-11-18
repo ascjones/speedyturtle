@@ -12,24 +12,6 @@ body {
     color: #696969;
 }
 
-a:link {
-    color: #034af3;
-    text-decoration: underline;
-}
-
-a:visited {
-    color: #505abc;
-}
-
-a:hover {
-    color: #1d60ff;
-    text-decoration: none;
-}
-
-a:active {
-    color: #12eb87;
-}
-
 p, ul {
     margin-bottom: 20px;
     line-height: 1.6em;
@@ -203,26 +185,6 @@ input[type="submit"] {
     padding: 5px;
 }
 
-/* TABLE
-----------------------------------------------------------*/
-
-table {
-    border: solid 1px #e8eef4;
-    border-collapse: collapse;
-}
-
-table td {
-    padding: 5px;
-    border: solid 1px #e8eef4;
-}
-
-table th {
-    padding: 6px 5px;
-    text-align: left;
-    background-color: #e8eef4;
-    border: solid 1px #e8eef4;
-}
-
 /* MISC  
 ----------------------------------------------------------*/
 .clear {
@@ -231,11 +193,6 @@ table th {
 
 .error {
     color: Red;
-}
-
-nav, 
-#menucontainer {
-    margin-top: 40px;
 }
 
 div#title {
